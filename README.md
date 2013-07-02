@@ -1,0 +1,4 @@
+angularapp
+==========
+
+springmvc-angular-app
