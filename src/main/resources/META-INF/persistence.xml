@@ -1,0 +1,5 @@
+<persistence>
+	<persistence-unit name="angularPU">
+		<class>org.angularapp.context.bean.Usuario</class>
+	</persistence-unit>
+</persistence>          

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE urlrewrite
+        PUBLIC "-//tuckey.org//DTD UrlRewrite 3.2//EN"
+        "http://www.tuckey.org/res/dtds/urlrewrite3.2.dtd">
+<urlrewrite default-match-type="regex">
+	<rule>
+		<from>^/img/(.*)$</from>
+		<to last="true">/img/$1</to>
+	</rule>
+	<rule>
+		<from>^/robots\.txt$</from>
+		<to last="true">/robots.txt</to>
+	</rule>
+	<rule>
+		<from>^/js/(.*)$</from>
+		<to last="true">/js/$1</to>
+	</rule>
+	<rule>
+		<from>^/css/(.*)$</from>
+		<to last="true">/css/$1</to>
+	</rule>
+	<rule>
+		<from>^/resources/(.*)$</from>
+		<to last="true">/resources/$1</to>
+	</rule>
+	<rule>
+		<from>^(.*)\.txt$</from>
+		<to last="true">/txt/$1.txt</to>
+	</rule>
+	<rule>
+		<from>^(.*).html$</from>
+		<to last="true">/html/$1.html</to>
+	</rule>
+	<rule>
+		<from>(.*)\.jsp</from>
+		<to last="true">$1.jsp</to>
+	</rule>
+	<rule>
+		<from>^/app/(.*)$</from>
+		<to last="true">/app/$1</to>
+	</rule>
+	<!-- última de las reglas -->
+	<rule>
+		<from>^/(.*)$</from>
+		<to>/app/$1</to>
+	</rule>
+	<outbound-rule match-type="wildcard">
+		<from>/app/**</from>
+		<to>/$1</to>
+	</outbound-rule>
+	<outbound-rule encodefirst="true">
+		<name>Strip URL Session ID's</name>
+		<from>^(.*?)(?:\;jsessionid=[^\?#]*)?(\?[^#]*)?(#.*)?$</from>
+		<to>$1$2$3</to>
+	</outbound-rule>
+
+</urlrewrite>
